@@ -1,6 +1,7 @@
 import React from 'react';
 import ReactDOM from 'react-dom/client';
-import ChangeCar from './components/HandleEvent/StateDemoComponent/ChangeCar';
+import DemoProbs from './components/Prob/DemoProps';
+// import ChangeCar from './components/HandleEvent/StateDemoComponent/ChangeCar';
 
 // import HomeLayout from './components/HomeLayout/HomeLayout';
 // import Databinding from './components/Databinding/Databinding';
@@ -10,7 +11,7 @@ import ChangeCar from './components/HandleEvent/StateDemoComponent/ChangeCar';
 // import ChangeColor from './components/StateDemoComponent/ChangeColor';
 // import ChangeAvatar from './components/StateDemoComponent/ChangeAvatar';
 // import ChangeCar from './components/StateDemoComponent/ChangeCar';
-
+// import RenderWithMap from './components/Renderwithmap/RenderWithMap';
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 // jsx : => html được viết trong file js (nền js) được gọi là jsx
@@ -27,6 +28,8 @@ root.render(
     {/* <StateDemoComponent /> */}
     {/* <ChangeColor /> */}
     {/* <ChangeAvatar /> */}
-    <ChangeCar />
+    {/* <ChangeCar /> */}
+    {/* <RenderWithMap />  */}
+    <DemoProbs />
   </div>,
 );
