@@ -1,6 +1,9 @@
 import React from 'react';
 import ReactDOM from 'react-dom/client';
-import DemoProbs from './components/Prob/DemoProps';
+// import DemoProps from './components/Props/DemoProps';
+// import ExRenderListProduct from './components/ExRenderListProduct/ExRenderListProduct';
+import ExViewDetail from './components/Props/ExviewDetail/ExviewDetail';
+// import DemoProbs from './components/Prob/DemoProps';
 // import ChangeCar from './components/HandleEvent/StateDemoComponent/ChangeCar';
 
 // import HomeLayout from './components/HomeLayout/HomeLayout';
@@ -30,6 +33,8 @@ root.render(
     {/* <ChangeAvatar /> */}
     {/* <ChangeCar /> */}
     {/* <RenderWithMap />  */}
-    <DemoProbs />
+    {/* <DemoProps /> */}
+    {/* <ExRenderListProduct></ExRenderListProduct> */}
+    <ExViewDetail />
   </div>,
 );
