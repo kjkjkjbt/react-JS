@@ -1,8 +1,10 @@
-import React from 'react';
-import ReactDOM from 'react-dom/client';
+import React from "react";
+import ReactDOM from "react-dom/client";
 // import DemoProps from './components/Props/DemoProps';
 // import ExRenderListProduct from './components/ExRenderListProduct/ExRenderListProduct';
-import ExViewDetail from './components/Props/ExviewDetail/ExviewDetail';
+// import ExViewDetail from './components/Props/ExviewDetail/ExviewDetail';
+// import CardDetailPhone from './components/Props/ExviewDetail/CardDetailPhone';
+import ExShoeStore from "./components/Props/ExShoeStore/ExShoeStore";
 // import DemoProbs from './components/Prob/DemoProps';
 // import ChangeCar from './components/HandleEvent/StateDemoComponent/ChangeCar';
 
@@ -16,7 +18,7 @@ import ExViewDetail from './components/Props/ExviewDetail/ExviewDetail';
 // import ChangeCar from './components/StateDemoComponent/ChangeCar';
 // import RenderWithMap from './components/Renderwithmap/RenderWithMap';
 
-const root = ReactDOM.createRoot(document.getElementById('root'));
+const root = ReactDOM.createRoot(document.getElementById("root"));
 // jsx : => html được viết trong file js (nền js) được gọi là jsx
 // 2 loại function component , class component
 root.render(
@@ -35,6 +37,7 @@ root.render(
     {/* <RenderWithMap />  */}
     {/* <DemoProps /> */}
     {/* <ExRenderListProduct></ExRenderListProduct> */}
-    <ExViewDetail />
-  </div>,
+    {/* <ExViewDetail /> */}
+    <ExShoeStore />
+  </div>
 );
