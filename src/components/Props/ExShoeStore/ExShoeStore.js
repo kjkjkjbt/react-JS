@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
-import ShoeItem from './ShoeItem';
 import ShoeListItem from './ShoeListItem';
+import CartShoe from './CartShoe';
 
 const dataListShoe = [
   {
@@ -145,12 +145,85 @@ const dataListShoe = [
   },
 ];
 
+// Xác định state => state phải ở component chứa được cả state và setSate
 export default class ExShoeStore extends Component {
-  render() {
-    return <div className='container'>
-        <ShoeItem />
-        <ShoeListItem />
+  state = {
+    arrCart: [],
+  };
+  handleAddShoe = (shoeClick) => {
+    console.log('Add shoe', shoeClick);
+    let shoeCartClick = { ...shoeClick, soLuong: 1 };
+    let cartShoeCurrent = this.state.arrCart;
+    // Function thực hiện chức năng thêm sản phẩm
+    //Kiểm tra xem sản phẩm đã có trong giỏ hàng chưa
+    let indexShoe = cartShoeCurrent.findIndex(
+      (shoe) => shoe.id == shoeClick.id,
+    );
+    // nếu mà có sản phẩm đó trong giỏ hàng rồi thì so lượng + 1
+    if (indexShoe != -1) {
+      cartShoeCurrent[indexShoe].soLuong += 1;
+    } else {
+      // Nếu chưa có thì thêm sản phẩm đó vào arr cart
+      cartShoeCurrent.push(shoeCartClick);
+    }
 
-    </div>;
+    // Set state
+    this.setState({
+      arrCart: cartShoeCurrent,
+    });
+  };
+  // [
+  //   {id : 1,
+  //   name:"nike",
+  // soLuong:2},
+  //   {id : 2,
+  //   name:"adidas",
+  // soLuong:4},
+  //   {id : 3,
+  //   name:"Converse",
+  // soLuong:1}
+  // ]
+
+  
+  handleDeleteShoe = (shoeClick) => {
+    console.log('Delete', shoeClick);
+
+    // cách 1: dựa vào id shoe để tìm ra index sp ở trong giỏ hàng, và xóa
+    // Dựa vào index để cập nhật lại arrCart
+    // let cartEdit = this.state.arrCart;
+    // let indexShoeClick = cartEdit.findIndex((shoe) => shoe.id == shoeClick);
+    // // Nếu tồn tại sản phẩm thì xoá nó đi
+    // if (indexShoeClick != -1) {
+    //   cartEdit.splice(indexShoeClick, 1);
+    // }
+
+    // cách 2: XÓA DỰA VÀO FILTER:
+    let cartEdit= this.state.arrCart.filter((shoe)=>shoe.id != shoeClick)
+
+    // Cập nhật lại giỏ hàng
+    this.setState({
+      arrCart: cartEdit,
+    });
+  };
+
+  handleChangeQuantity =(shoeClick,soLuong)=>{
+    console.log("change quantity",shoeClick,soLuong);
+
+  }
+  render() {
+    return (
+      <div className="container">
+        <ShoeListItem
+          handleAddShoe={this.handleAddShoe}
+          dataListShoe={dataListShoe}
+        />
+        <h3 className="mt-5">Giỏ hàng</h3>
+        <CartShoe
+          dataCartShoe={this.state.arrCart}
+          handleDeleteShoe={this.handleDeleteShoe}
+          handleChangeQuantity={this.handleChangeQuantity}
+        />
+      </div>
+    );
   }
 }

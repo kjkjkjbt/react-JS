@@ -1,7 +1,36 @@
-import React, { Component } from 'react';
+import React, { Component } from "react";
 
 export default class CartShoe extends Component {
+  renderListTrShoeCart = () => {
+    let { dataCartShoe, handleDeleteShoe , handleChangeQuantity} = this.props;
+    return dataCartShoe.map((shoe, index) => {
+      return (
+        <tr key={index}>
+          <td>{shoe.name}</td>
+          <td>
+            <img width={50} src={shoe.image} alt="" />
+          </td>
+          <td>{shoe.price}</td>
+          <td>
+            <button onClick={()=>handleChangeQuantity(shoe.id,-1 )} className="btn btn-danger">-</button>
+            <span className="mx-3">{shoe.soLuong}</span>
+            <button onClick={()=>handleChangeQuantity(shoe.id,1)} className="btn btn-success">+</button>
+          </td>
+          <td>{shoe.price * shoe.soLuong}</td>
+          <td>
+            <button
+              onClick={() => handleDeleteShoe(shoe.id)}
+              className="btn btn-danger"
+            >
+              Delete
+            </button>
+          </td>
+        </tr>
+      );
+    });
+  };
   render() {
+    // let { dataCartShoe } = this.props;
     return (
       <div className="container">
         <table className="table">
@@ -15,20 +44,7 @@ export default class CartShoe extends Component {
               <td>Action</td>
             </tr>
           </thead>
-          <tbody>
-            <tr>
-              <td>Adidas</td>
-              <td>
-                <img width={50} src="https://i.pravatar.cc?u=18" alt="" />
-              </td>
-              <td>30</td>
-              <td>2</td>
-              <td>60</td>
-              <td>
-                <button className="btn btn-danger">Delete</button>
-              </td>
-            </tr>
-          </tbody>
+          <tbody>{this.renderListTrShoeCart()}</tbody>
         </table>
       </div>
     );

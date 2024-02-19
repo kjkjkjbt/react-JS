@@ -4,7 +4,7 @@ import ProductCard from './ProductCard';
 
 export default class DemoProps extends Component {
   // Prop có thể truyền {},[],string,number,bolean, jsx ...
-
+// so sánh Props va State: 
   //   Prop là gì
   // Prop là thuộc tính có sẵn của class component dùng để nhận giá trị từ nơi nó được sử dụng (từ cha chuyền vào con)
 
