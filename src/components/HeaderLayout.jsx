@@ -65,12 +65,25 @@
                             return '';
                         }
                         }, 'nav-link')}
-                        to="/shoe-store"
+                        to="/bt-change-car"
                     >
-                        Shoe Store
+                        Bài tập đổi xe
                     </NavLink>
                     </li>
-            
+                    <li className="nav-item">
+                    <NavLink
+                        className={clsx((props) => {
+                        if (props.isActive) {
+                            return 'active';
+                        } else {
+                            return '';
+                        }
+                        }, 'nav-link')}
+                        to="/bt-form"
+                    >
+                        Bài tập form
+                    </NavLink>
+                    </li>
                 </ul>
                 <form className="d-flex">
                     <input
