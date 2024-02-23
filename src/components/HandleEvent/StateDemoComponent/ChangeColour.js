@@ -5,7 +5,7 @@
     // 3 .  binding state lên giao diện
     // 4 . Xử lý sự kiện thay đổi state => setState
 
-    export default class ChangeColor extends Component {
+    export default class ChangeColour extends Component {
     state = {
         color: 'red',
     };

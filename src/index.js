@@ -1,43 +1,33 @@
 import React from "react";
 import ReactDOM from "react-dom/client";
-// import DemoProps from './components/Props/DemoProps';
-// import ExRenderListProduct from './components/ExRenderListProduct/ExRenderListProduct';
-// import ExViewDetail from './components/Props/ExviewDetail/ExviewDetail';
-// import CardDetailPhone from './components/Props/ExviewDetail/CardDetailPhone';
+
+import { BrowserRouter, Route, Routes } from "react-router-dom";
+import ChangeCar from "./components/HandleEvent/StateDemoComponent/ChangeCar";
+import ChangeColour from "./components/HandleEvent/StateDemoComponent/ChangeColour";
 import ExShoeStore from "./components/Props/ExShoeStore/ExShoeStore";
-// import DemoProbs from './components/Prob/DemoProps';
-// import ChangeCar from './components/HandleEvent/StateDemoComponent/ChangeCar';
-
-// import HomeLayout from './components/HomeLayout/HomeLayout';
-// import Databinding from './components/Databinding/Databinding';
-// import StyleComponent from './components/StyleComponent/StyleComponent';
-// import HandleEvent from './components/HandleEvent/HandleEvent';
-// import StateDemoComponent from './components/StateDemoComponent/StateDemoComponent';
-// import ChangeColor from './components/StateDemoComponent/ChangeColor';
-// import ChangeAvatar from './components/StateDemoComponent/ChangeAvatar';
-// import ChangeCar from './components/StateDemoComponent/ChangeCar';
-// import RenderWithMap from './components/Renderwithmap/RenderWithMap';
-
+import HeaderLayout from "./components/StyleComponent/HeaderLayout";
+import HomeTemplate from "./Template/HomeTemplate";
 const root = ReactDOM.createRoot(document.getElementById("root"));
 // jsx : => html được viết trong file js (nền js) được gọi là jsx
 // 2 loại function component , class component
 root.render(
-  <div>
-    {/* <Card></Card>
-    <Card /> */}
-    {/* <AlertComponent /> */}
-    {/* <HomeLayout /> */}
-    {/* <Databinding /> */}
-    {/* <StyleComponent /> */}
-    {/* <HandleEvent /> */}
-    {/* <StateDemoComponent /> */}
-    {/* <ChangeColor /> */}
-    {/* <ChangeAvatar /> */}
-    {/* <ChangeCar /> */}
-    {/* <RenderWithMap />  */}
-    {/* <DemoProps /> */}
-    {/* <ExRenderListProduct></ExRenderListProduct> */}
-    {/* <ExViewDetail /> */}
-    <ExShoeStore />
-  </div>
+  <BrowserRouter>
+    {/* Những thẻ nào để ngoài Routes thì luôn luôn được load lên */}
+    {/* Thẻ Navlink (của react router dom) để di chuyển giữa các trang trong react */}
+    {/* isActive sẽ trả về true khi router đó đang active, ngược lại sẽ trả về false */}
+
+    <HeaderLayout />
+
+    <Routes>
+      {/* localhost:3000/shoe-store */}
+
+      <Route path="home" element={<HomeTemplate />}>
+        <Route path="" element={<div>Trang chủ</div>}></Route>
+        <Route path="/shoe-store" element={<ExShoeStore />}></Route>
+      </Route>
+
+      <Route path="/bt-change-color" element={<ChangeColour />}></Route>
+      <Route path="/bt-change-car" element={<ChangeCar />}></Route>
+    </Routes>
+  </BrowserRouter>
 );
