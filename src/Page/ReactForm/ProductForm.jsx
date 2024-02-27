@@ -69,24 +69,32 @@ export default class ProductForm extends Component {
         break;
       }
     }
+
     for (let key in newValue) {
       if (newValue[key] === "") {
         valid = false;
         break;
       }
     }
+
     this.setState({
       value: newValue,
       errValue: newErrValue,
       isSubmit: valid,
     });
   };
+  handleSubmit = (e) => {
+    // Sự kiện chặn load trang
+    e.preventDefault();
+    let { handleAddProduct } = this.props;
+    handleAddProduct(this.state.value);
+  };
   render() {
     console.log("state", this.state);
     return (
       <div className="container mt-5">
         <h2>Form Nhập Thông Tin Sản Phẩm</h2>
-        <form className="border rounded-2 p-4">
+        <form onSubmit={this.handleSubmit} className="border rounded-2 p-4">
           <div className="row">
             <div className="col-md-6">
               <div className="mb-3">
