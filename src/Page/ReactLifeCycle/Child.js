@@ -14,16 +14,16 @@ export default class Child extends PureComponent {
     console.log('getDerivedStateFromProps child: ');
     return null;
   }
-  shouldComponentUpdate(newProps, newState) {
-    // newProps là props sau khi thay đổi trước khi render
-    // newState là state sau khi thay đổi trước khi render
-    console.log('shouldComponentUpdate child: ');
-    // Can thiệp vào shouldComponentUpdate để biết là khi bấm tăng number thì k render lại còn bấm like thì sẽ render lại
-    if (newProps.like != this.props.like) {
-      return true;
-    }
-    return false;
-  }
+  // shouldComponentUpdate(newProps, newState) {
+  //   // newProps là props sau khi thay đổi trước khi render
+  //   // newState là state sau khi thay đổi trước khi render
+  //   console.log('shouldComponentUpdate child: ');
+  //   // Can thiệp vào shouldComponentUpdate để biết là khi bấm tăng number thì k render lại còn bấm like thì sẽ render lại
+  //   if (newProps.like != this.props.like) {
+  //     return true;
+  //   }
+  //   return false;
+  // }
   render() {
     console.log('render: child ');
     return (

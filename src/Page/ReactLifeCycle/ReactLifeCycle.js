@@ -9,10 +9,11 @@ export default class ReactLifeCycle extends Component {
       number: 1,
       like: 1,
     };
+
+    this.timeOut = {};
   }
 
   static getDerivedStateFromProps(newProps, currentState) {
-    // return null 
     // Dùng để can thiệp quá trình trước khi render
     // Trước khi render state ra giao diện thì lấy state * 2
     currentState.number *= 2;
@@ -58,10 +59,20 @@ export default class ReactLifeCycle extends Component {
   }
   componentDidMount() {
     console.log('componentDidMount: ');
+    //
+    this.timeOut = setInterval(() => {
+      console.log('Fetch data server');
+    }, 1000);
   }
   componentDidUpdate(prevProps,prevState) {
     
 
   }
+  }
+  componentWillUnmount() {
+    // Sẽ chạy khi component  không còn trên giao diện
+    console.log('componentWillUnmount: ');
+
+    clearInterval(this.timeOut);
   }
 

@@ -3,16 +3,16 @@ import React, { Component } from "react";
 export default class ProductForm extends Component {
   state = {
     value: {
-      id: "",
-      tenSp: "",
-      img: "",
-      price: "",
+      id: '',
+      tenSp: '',
+      img: '',
+      price: '',
     },
     errValue: {
-      id: "",
-      tenSp: "",
-      img: "",
-      price: "",
+      id: '',
+      tenSp: '',
+      img: '',
+      price: '',
     },
     isSubmit: false,
   };
@@ -20,7 +20,7 @@ export default class ProductForm extends Component {
     // e.target đại diện cho thẻ input
 
     let tag = e.target;
-    let dataType = e.target.getAttribute("data-type");
+    let dataType = e.target.getAttribute('data-type');
     let nameInput = tag.name;
     // clone value hiện tại
     let newValue = { ...this.state.value };
@@ -29,26 +29,26 @@ export default class ProductForm extends Component {
 
     // xử lý err
     let newErrValue = { ...this.state.errValue };
-    let message = "";
+    let message = '';
 
-    if (newValue[nameInput] === "") {
+    if (newValue[nameInput] === '') {
       message = `${nameInput} cannot be blank !`;
     } else {
       if (dataType) {
         switch (dataType) {
-          case "number":
+          case 'number':
             {
               let regex = /^(?:[1-9]\d{0,2}|1000)$/;
               if (!regex.test(newValue[nameInput])) {
-                message = "* Trường này chỉ nhận số";
+                message = '* Trường này chỉ nhận số';
               }
             }
             break;
-          case "string":
+          case 'string':
             {
               let regex = /^[A-Za-z]+$/;
               if (!regex.test(newValue[nameInput])) {
-                message = "* Trường này chỉ chữ";
+                message = '* Trường này chỉ chữ';
               }
             }
             break;
@@ -64,14 +64,14 @@ export default class ProductForm extends Component {
     // chỉ 1 trường value mà "" => lỗi
     let valid = true;
     for (let key in newErrValue) {
-      if (newErrValue[key] !== "") {
+      if (newErrValue[key] !== '') {
         valid = false;
         break;
       }
     }
 
     for (let key in newValue) {
-      if (newValue[key] === "") {
+      if (newValue[key] === '') {
         valid = false;
         break;
       }
@@ -89,9 +89,14 @@ export default class ProductForm extends Component {
     let { handleAddProduct } = this.props;
     handleAddProduct(this.state.value);
   };
-  
+  static getDerivedStateFromProps(newProps, currentState) {
+    // Can thiệp trước khi render , lấy props product edit gán vào state
+    // Trả ra state mới để hàm lấy dữ liệu
+    return null;
+  }
   render() {
-    let { id, tenSp, img, price } = this.props.productEdit;
+    // let { id, tenSp, img, price } = this.props.productEdit;
+    let {id,tenSp,img,price} =this.state.value ;
     return (
       <div className="container mt-5">
         <h2>Form Nhập Thông Tin Sản Phẩm</h2>
