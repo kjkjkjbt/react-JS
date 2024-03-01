@@ -13,6 +13,8 @@ import Register from "./Page/Auth/Register";
 import Page404 from "./Page/Page404";
 import Admin from "./Page/Auth/Admin";
 import ReactForm from './Page/ReactForm/ReactForm';
+import ReactLifeCycle from "./Page/ReactLifeCycle/ReactLifeCycle";
+
 const root = ReactDOM.createRoot(document.getElementById("root"));
 // jsx : => html được viết trong file js (nền js) được gọi là jsx
 // 2 loại function component , class component
@@ -29,21 +31,23 @@ root.render(
         <Route path="shoe-store" element={<ExShoeStore />}></Route>
         <Route path="bt-change-color" element={<ChangeColour />}></Route>
         <Route path="bt-change-car" element={<ChangeCar />}></Route>
-        {/* bai tập FOrm */}
         <Route path="bt-form" element={<ReactForm />}></Route>
-
+        <Route path="bt-life-cycle" element={<ReactLifeCycle />}></Route>
+        
       </Route>
       {/* AuthTemplate */}
       <Route path="auth" element={<AuthTemplate />}>
         <Route index element={<Login />}></Route>
-        {/* index này là để khi gõ auth thi vẫn ra login ma ko cần gõ auth/login */}
         <Route path="login" element={<Login />}></Route>
         <Route path="register" element={<Register />}></Route>
-        {/* khi gõ linh tinh trên url -> thì sẽ thông báo là ko tim thấy(404)...hoặc là đẩy thẳng về trang chủ, hay trang login luôn */}
-        <Route path="*" element={<Navigate to="auth/login" />}></Route>
-        <Route path="page-notfound" element={<Page404 />}></Route>
-        <Route path="admin" element={<Admin />}></Route>
       </Route>
+
+      <Route path="/page-notfound" element={<Page404 />}></Route>
+      {/* /kjkjkjkjk */}
+      {/* path * là tất cả những đường dẫn k tồn tại trong đây */}
+      <Route path="admin" element={<Admin />}></Route>
+
+      <Route path="*" element={<Navigate to="" />}></Route>
     </Routes>
-  </BrowserRouter>
+  </BrowserRouter>,
 );

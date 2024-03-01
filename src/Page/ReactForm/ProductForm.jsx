@@ -89,8 +89,9 @@ export default class ProductForm extends Component {
     let { handleAddProduct } = this.props;
     handleAddProduct(this.state.value);
   };
+  
   render() {
-    console.log("state", this.state);
+    let { id, tenSp, img, price } = this.props.productEdit;
     return (
       <div className="container mt-5">
         <h2>Form Nhập Thông Tin Sản Phẩm</h2>
@@ -108,9 +109,10 @@ export default class ProductForm extends Component {
                   name="id"
                   id="xinchaobc64"
                   placeholder="Nhập ID sản phẩm"
+                  value={id}
                   onInput={this.handleChangeInput}
                 />
-                <p style={{ height: "30px" }} className="text-danger">
+                <p style={{ height: '30px' }} className="text-danger">
                   {this.state.errValue.id}
                 </p>
               </div>
@@ -123,10 +125,11 @@ export default class ProductForm extends Component {
                   data-type="string"
                   className="form-control"
                   name="tenSp"
+                  value={tenSp}
                   placeholder="Nhập tên sản phẩm"
                   onInput={this.handleChangeInput}
                 />
-                <p style={{ height: "30px" }} className="text-danger">
+                <p style={{ height: '30px' }} className="text-danger">
                   {this.state.errValue.tenSp}
                 </p>
               </div>
@@ -140,10 +143,11 @@ export default class ProductForm extends Component {
                   type="url"
                   className="form-control"
                   name="img"
+                  value={img}
                   placeholder="Nhập URL hình ảnh sản phẩm"
                   onInput={this.handleChangeInput}
                 />
-                <p style={{ height: "30px" }} className="text-danger">
+                <p style={{ height: '30px' }} className="text-danger">
                   {this.state.errValue.img}
                 </p>
               </div>
@@ -155,10 +159,11 @@ export default class ProductForm extends Component {
                   type="number"
                   className="form-control"
                   name="price"
+                  value={price}
                   placeholder="Nhập giá sản phẩm"
                   onInput={this.handleChangeInput}
                 />
-                <p style={{ height: "30px" }} className="text-danger">
+                <p style={{ height: '30px' }} className="text-danger">
                   {this.state.errValue.price}
                 </p>
               </div>

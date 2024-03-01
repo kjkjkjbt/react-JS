@@ -6,17 +6,23 @@ export default class ReactForm extends Component {
     arrProduct: [
       {
         id: 1,
-        tenSp: "Iphone",
-        img: "https://picsum.photos/id/1/200/200",
+        tenSp: 'Iphone',
+        img: 'https://picsum.photos/id/1/200/200',
         price: 5000,
       },
       {
         id: 2,
-        tenSp: "Samsung",
-        img: "https://picsum.photos/id/2/200/200",
+        tenSp: 'Samsung',
+        img: 'https://picsum.photos/id/2/200/200',
         price: 7000,
       },
     ],
+    productEdit: {
+      id: 1,
+      tenSp: 'Iphone',
+      img: 'https://picsum.photos/id/1/200/200',
+      price: 5000,
+    },
   };
   handleAddProduct = (proClick) => {
     let arrUpdate = [...this.state.arrProduct];
@@ -26,28 +32,37 @@ export default class ReactForm extends Component {
     });
   };
   handleDeleteProduct = (idProduct) => {
-    console.log(idProduct);
     let newArrPro = this.state.arrProduct.filter(
-      (item) => item.id != idProduct
+      (item) => item.id != idProduct,
     );
     this.setState({
-      arrProduct: [...newArrPro],
+      arrProduct: newArrPro,
     });
   };
+  handleEditProduct = (proClick) => {
+    this.setState ({
+      productEdit : proClick,
+    })
+  }
   render() {
     return (
       <div>
         <h3>Bài tập react form</h3>
 
-        <ProductForm handleAddProduct={this.handleAddProduct} />
+        <ProductForm
+          productEdit={this.state.productEdit}
+          handleAddProduct={this.handleAddProduct}
+        />
 
         <table className="table container mt-4">
           <thead>
-            <th>id</th>
-            <th>name</th>
-            <th>Image</th>
-            <th>Price</th>
-            <th>Action</th>
+            <tr className="table-dark">
+              <th>id</th>
+              <th>name</th>
+              <th>Image</th>
+              <th>Price</th>
+              <th>Action</th>
+            </tr>
           </thead>
           <tbody>
             {this.state.arrProduct.map((phone) => {
@@ -60,7 +75,9 @@ export default class ReactForm extends Component {
                   </td>
                   <td>{phone.price}</td>
                   <td>
-                    <button className="btn btn-primary">Edit</button>
+                    <button 
+                    onClick={()=>this.handleEditProduct(phone)}
+                    className="btn btn-primary">Edit</button>
                     <button
                       onClick={() => {
                         this.handleDeleteProduct(phone.id);
