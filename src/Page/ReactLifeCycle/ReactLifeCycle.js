@@ -1,4 +1,4 @@
-import React, { Component } from 'react'
+import React, { Component } from 'react';
 import Child from './Child';
 
 export default class ReactLifeCycle extends Component {
@@ -64,10 +64,8 @@ export default class ReactLifeCycle extends Component {
       console.log('Fetch data server');
     }, 1000);
   }
-  componentDidUpdate(prevProps,prevState) {
-    
-
-  }
+  componentDidUpdate(prevProps, prevState) {
+    console.log('componentDidUpdate: ');
   }
   componentWillUnmount() {
     // Sẽ chạy khi component  không còn trên giao diện
@@ -75,4 +73,4 @@ export default class ReactLifeCycle extends Component {
 
     clearInterval(this.timeOut);
   }
-
+}

@@ -98,6 +98,20 @@
                           Lifecycle
                         </NavLink>
                       </li>
+                      <li className="nav-item">
+                  <NavLink
+                    className={clsx((props) => {
+                      if (props.isActive) {
+                        return 'active';
+                      } else {
+                        return '';
+                      }
+                    }, 'nav-link')}
+                    to="redux-change-number"
+                  >
+                    Redux change number
+                  </NavLink>
+                      </li>
                     </ul>
                     <form className="d-flex">
                       <input

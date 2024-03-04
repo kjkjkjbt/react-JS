@@ -33,23 +33,37 @@ export default class ReactForm extends Component {
   };
   handleDeleteProduct = (idProduct) => {
     let newArrPro = this.state.arrProduct.filter(
-      (item) => item.id != idProduct,
+      (item) => item.id !== idProduct,
     );
     this.setState({
       arrProduct: newArrPro,
     });
   };
   handleEditProduct = (proClick) => {
-    this.setState ({
-      productEdit : proClick,
-    })
-  }
+    this.setState({
+      productEdit: proClick,
+    });
+  };
+  handleUpdateProduct = (productUpdate) => {
+    console.log('productUpdate: ', productUpdate);
+
+    let index = this.state.arrProduct.findIndex(
+      (item) => item.id == productUpdate.id,
+    );
+
+    this.state.arrProduct[index] = productUpdate;
+
+    this.setState({
+      arrProduct: this.state.arrProduct,
+    });
+  };
   render() {
     return (
       <div>
         <h3>Bài tập react form</h3>
 
         <ProductForm
+          handleUpdateProduct={this.handleUpdateProduct}
           productEdit={this.state.productEdit}
           handleAddProduct={this.handleAddProduct}
         />
@@ -75,9 +89,14 @@ export default class ReactForm extends Component {
                   </td>
                   <td>{phone.price}</td>
                   <td>
-                    <button 
-                    onClick={()=>this.handleEditProduct(phone)}
-                    className="btn btn-primary">Edit</button>
+                    <button
+                      onClick={() => {
+                        this.handleEditProduct(phone);
+                      }}
+                      className="btn btn-primary"
+                    >
+                      Edit
+                    </button>
                     <button
                       onClick={() => {
                         this.handleDeleteProduct(phone.id);
